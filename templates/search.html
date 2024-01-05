@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+    <meta charset="UTF-8">
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+{#<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">#}
+{#<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">#}
+
+<style>
+    ::-webkit-scrollbar {
+                                  width: 8px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #f1f1f1;
+                                }
+
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: #888;
+                                }
+
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: #b47210;
+                                }
+   body {
+            background-color: #ffffff;
+            font-family: sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+        }
+    /* Style The Dropdown Button */
+.dropbtn {
+  background-color: #219b40;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #8d5308;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #251e1e
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+{#  .abcd{#}
+{#      height: 100%;#}
+{#      background-repeat: no-repeat;#}
+{#      background-size: cover;#}
+{#      background-position: center;#}
+{#  }  #}
+{#</style>#}
+.round-image {
+  border-radius: 25px;
+}
+
+
+</style>
+    <title></title>
+</head>
+<body id="top">
+<div class="wrapper row3">
+  <main class="hoc container clear">
+    <section id="introblocks">
+      <ul class="nospace group btmspace-80">
+      <br>
+        {% for i in p %}
+        <li class="one_third">
+          <figure><a href="{{ i.get_url }}"><img src="{{ i.img.url }}" alt="" style="width: 270px;height: 220px" class="round-image"></a>
+            <figcaption>
+              <a href="{{ i.get_url }}" <h6 class=heading style="color: black">{{ i.name }}</h6>
+              </a>
+              <br><br>
+{#              <p><i>{{ i.desc | truncatewords:12 }}</i></p>#}
+{#              <p><b><i>Rs.{{ i.price }}</i></b></p>#}
+{#              <p><i>Stock Left : {{ i.stock }}</i></p><br>#}
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+
+      </ul>
+    </section>
+    <hr class="btmspace-80">
+
+    <div class="clear"></div>
+  </main>
+</div>
+<script src="{% static 'hm/layout/scripts/jquery.min.js'%}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.backtotop.js'%}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.mobilemenu.js'%}"></script>
+</body>
+</html>
+{% endblock %}

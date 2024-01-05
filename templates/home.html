@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>Sislaf</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+
+<style>
+    /* Style The Dropdown Button */
+.dropbtn {
+  background-color: #cc9238;
+  color: black;
+  padding: 14px;
+  font-size: 16px;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  display:inline-block;
+  margin: 0 auto;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  {#text-align: center;#}
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  text-align: left;
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  {# top: 100%; /* Position the dropdown content below the button */#}
+  {#left: 50%; /* Center the dropdown content horizontally */#}
+  {#transform: translateX(-50%);#}
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #8d5308;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #251e1e
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #18622a;
+}
+{#  .abcd{#}
+{#      height: 100%;#}
+{#      background-repeat: no-repeat;#}
+{#      background-size: cover;#}
+{#      background-position: center;#}
+{#  }  #}
+{#</style>#}
+
+ /* for round images */
+.round-image {
+  border-radius: 25px;
+}
+
+/* search bar design */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+    align-self: center;
+}
+
+.search-bar{
+    width: 30%;
+    margin: 0 auto;
+    max-width: 500px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 100px;
+    padding: 1px;
+    backdrop-filter: blur(4px) saturate(180%);
+}
+.search-bar input{
+    background: transparent;
+    flex: 1;
+    border: 0;
+    outline: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: #cac7ff;
+}
+
+.search-bar button img{
+    width: 30px;
+
+}
+.search-bar button{
+    border: 0;
+    border-radius: 100px;
+    width: 45px;
+    height: 45px;
+    background: #a67b3a;
+    cursor: pointer;
+}
+
+</style>
+</head>
+<body id="top">
+<!-- Top Background Image Wrapper -->
+
+<div  style="background-image:url({% static 'hm/images/demo/backgrounds/food1.jpg' %});">
+
+{#       <div class="wrapper row0">#}
+{#          <div id="topbar" class="hoc clear">#}
+{#            <div class="fl_right">#}
+{#                <ul class="nospace">#}
+{#                <li id="searchform">#}
+{#                    <div>#}
+{#                     <form action="#" method="post">#}
+{#                        <fieldset>#}
+{#                        <legend>Quick Search:</legend>#}
+{#                        <input type="text" placeholder="Enter search term&hellip;">#}
+{#                        <button type="submit"><i class="fas fa-search"></i></button>#}
+{#                        </fieldset>#}
+{#                      </form>#}
+{#                    </div>#}
+{#                </li>#}
+{#                </ul>#}
+{#            </div>#}
+{#          </div>#}
+{#       </div>#}
+
+
+   <div class="wrapper row0">
+     <form class="search-bar" action="{% url 'search' %}" method="get">
+             <input type="text" placeholder="search anything" name="q">
+             <button type="submit"><i class="fas fa-search"></i></button>
+     </form>
+   </div>
+   <br>
+       <div class="dropdown">
+          <button class="dropbtn">Category</button>
+          <div class="dropdown-content">
+               <a href="/">All</a>
+                {% for category in categories %}
+                    <a href="{{ category.get_url }}">{{ category.name }}</a>
+                {% endfor %}
+          </div>
+       </div>
+
+
+  <div id="pageintro" class="hoc clear">
+    <article>
+      <h3 class="heading">Order Best food from Your favourite </h3>
+        <p><i><b>Experience our superfast delivery for food delivered fresh & on time</b></i></p>
+    </article>
+  </div>
+
+</div>
+
+
+
+<div class="wrapper row3">
+  <main class="hoc container clear">
+{#    <section id="introblocks">#}
+
+      <ul class="nospace group btmspace-80">
+        {% for i in products.object_list %}
+        <li class="one_third">
+          <figure><a href="{{ i.get_url }}"><img src="{{ i.img.url }}" alt="" style="width: 270px;height: 220px" class="round-image"></a>
+            <figcaption>
+              <a href="{{ i.get_url }}"> <h6 class=heading style="color: black">{{ i.name }}</h6>
+              </a>
+              <br><br>
+{#              <p><i>{{ i.desc | truncatewords:12 }}</i></p>#}
+{#              <p><b><i>Rs.{{ i.price }}</i></b></p>#}
+{#              <p><i>Stock Left : {{ i.stock }}</i></p><br>#}
+            </figcaption>
+          </figure>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+        <div class="mx-auto">
+          <div class="center">
+              {% for pg in products.paginator.page_range %}
+                  <a href="?page={{ pg }}" class="btn btn-light btn-sm {% if products.number == pg %}activate {% endif %}">{{ pg }}</a>
+              {% endfor %}
+          </div>
+         </div>
+
+    <hr class="btmspace-80">
+
+
+
+  </main>
+</div>
+<script src="{% static 'hm/layout/scripts/jquery.min.js'%}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.backtotop.js'%}"></script>
+<script src="{% static 'hm/layout/scripts/jquery.mobilemenu.js'%}"></script>
+</body>
+</html>
+{% endblock %}

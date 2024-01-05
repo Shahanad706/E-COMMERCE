@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="">
+<!-- To declare your language - read more here: https://www.w3.org/International/questions/qa-html-language-declarations -->
+<head>
+<title>Eat & Meet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+<!-- Top Background Image Wrapper -->
+
+    <div class="bgded overlay" style="background-image:url({% static 'hm/images/demo/backgrounds/food1.jpg' %});">
+        <div class="wrapper row0">
+            <header id="header" class="hoc clear">
+            <div id="logo" class="fl_left"> 
+                <h1><a href="/">EAT & MEET</a></h1>
+            </div>
+            <nav id="mainav" class="fl_right"> 
+                <ul class="clear">
+                    <li class="active"><a href="/"><i class="fa fa-home" style="font-size:15px"></i></a></li>
+
+                    <li><a class="active" href="{% url 'cartdetails' %}"><i class="fa fa-shopping-cart" >&nbsp;{{ i_count }}</i></a> </li>
+                    {% if user.is_authenticated %}
+                    <li>hello {{ user.username }}</li>
+                    <li><a class="active" href="accounts/logout">Logout</a> </li>
+                    {% else %}
+                    <li><a class="active" href="{% url 'register' %}">Register</a> </li>
+                    <li><a class="active" href="accounts/login">Login</a> </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            </header>
+        </div>
+    </div>
+{% block content %}
+{% endblock %}    
+</body>
+</html>

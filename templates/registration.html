@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>::-webkit-scrollbar {
+                                  width: 8px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #f1f1f1;
+                                }
+
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: #888;
+                                }
+
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: #b47210;
+                                }
+        body {
+            background-color: #ffffff;
+            font-family: sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+
+
+        }
+
+        .container {
+            {#margin-top: 5vh;#}
+            {#display: flex;#}
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 1rem;
+            border: transparent;
+        }
+
+        .card-header {
+            color: #040705;
+            text-align: center;
+
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: #b2afaf;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1.5rem;
+            box-sizing: border-box;
+        }
+            input[type=text], input[type=password] {
+
+      border-radius: 50px;
+    }
+
+            {#input[type=text]:focus, input[type=password]:focus {#}
+            {#    background-color: #f1efef;#}
+            {#    outline: none;#}
+            {#}#}
+
+        button {
+            background-color: #040705;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 25%;
+            margin:auto;
+        }
+
+        button:hover {
+            background-color: #226b25;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Registration </h1>
+            </div>
+            <div class="card-body">
+                <form action="register" method="post">
+                    {% csrf_token %}
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="firstname">First Name:</label>
+                    <input type="text" id="firstname" name="first_name" required>
+
+                    <label for="lastname">Last Name:</label>
+                    <input type="text" id="lastname" name="last_name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" required>
+
+                    <label for="password1">Password:</label>
+                    <input type="password" id="password1" name="password1" required>
+
+                    <label for="password2">Re-type Password:</label>
+                    <input type="password" id="password2" name="password2" required>
+
+                    <button type="submit" value="register">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
